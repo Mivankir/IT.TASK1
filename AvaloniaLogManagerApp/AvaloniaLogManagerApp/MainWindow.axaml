@@ -1,0 +1,57 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="AvaloniaLogManagerApp.Views.MainWindow"
+        Title="Log Manager App">
+
+	<Grid Margin="10">
+		<!-- Определение строк и столбцов -->
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="Auto"/>
+			<ColumnDefinition Width="Auto"/>
+		</Grid.ColumnDefinitions>
+
+		<!-- Добавление сообщения -->
+		<ComboBox x:Name="cmbMessageType" Grid.Row="0" Grid.Column="0" Margin="5">
+			<ComboBoxItem>Error</ComboBoxItem>
+			<ComboBoxItem>Warning</ComboBoxItem>
+			<ComboBoxItem>Info</ComboBoxItem>
+		</ComboBox>
+		<DatePicker x:Name="dtpDateTime" Grid.Row="1" Grid.Column="0" Margin="5"/>
+		<TextBox x:Name="txtMessageText" Grid.Row="2" Grid.Column="0" Margin="5" Watermark="Введите текст сообщения"/>
+		<Button x:Name="btnAddMessage" Grid.Row="3" Grid.Column="0" Margin="5" Content="Добавить сообщение" Click="btnAddMessage_Click"/>
+
+		<!-- Фильтрация по типу -->
+		<ComboBox x:Name="cmbFilterType" Grid.Row="4" Grid.Column="0" Margin="5">
+			<ComboBoxItem>All</ComboBoxItem>
+			<ComboBoxItem>Error</ComboBoxItem>
+			<ComboBoxItem>Warning</ComboBoxItem>
+			<ComboBoxItem>Info</ComboBoxItem>
+		</ComboBox>
+
+		<!-- Фильтрация по диапазону времени -->
+		<StackPanel Grid.Row="5" Grid.Column="0" Orientation="Horizontal" Margin="5">
+			<DatePicker x:Name="dtpStartDate" Margin="0,0,5,0"/>
+			<DatePicker x:Name="dtpEndDate" Margin="0,0,5,0"/>
+			<Button x:Name="btnFilterByDate" Content="Фильтровать по дате" Click="btnFilterByDate_Click"/>
+		</StackPanel>
+
+		<!-- Список сообщений -->
+		<ListBox x:Name="lstMessages" Grid.Row="6" Grid.Column="0" Margin="5"/>
+
+		<!-- Кнопки в правом нижнем углу -->
+		<StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+			<Button x:Name="btnFilterByType" Margin="0,0,5,0" Content="Фильтровать по типу" Click="btnFilterByType_Click"/>
+			<Button x:Name="btnSaveToFile" Content="Сохранить в файл" Click="btnSaveToFile_Click"/>
+		</StackPanel>
+	</Grid>
+</Window>
